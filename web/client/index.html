@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coinflip — Оригинальная игра</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="logo">
+        <span class="logo-dot"></span>
+        <span>MyCoin</span>
+      </div>
+      <div class="balance">
+        <span class="balance-label">Баланс</span>
+        <span class="balance-value" id="balance">$0.00</span>
+      </div>
+      <button class="sound-btn" id="soundToggle" title="Звук">🔊</button>
+    </header>
+
+    <main class="game">
+      <div class="game-stats">
+        <div class="stat">
+          <div class="stat-label">Серия</div>
+          <div class="stat-value" id="series">0</div>
+        </div>
+        <div class="coin-stage">
+          <div class="coin" id="coin">
+            <div class="coin-face coin-heads">
+              <svg viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="46" fill="#ffcc33" stroke="#c98a00" stroke-width="4"/>
+                <text x="50" y="62" text-anchor="middle" font-size="42" font-weight="700" fill="#7a5200">H</text>
+              </svg>
+            </div>
+            <div class="coin-face coin-tails">
+              <svg viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="46" fill="#c0c0c0" stroke="#666" stroke-width="4"/>
+                <text x="50" y="62" text-anchor="middle" font-size="42" font-weight="700" fill="#333">T</text>
+              </svg>
+            </div>
+          </div>
+          <div class="coin-shadow"></div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Коэф.</div>
+          <div class="stat-value" id="coef">x0.00</div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <label class="ctrl-label">Ставка</label>
+        <div class="bet-row">
+          <input type="number" id="bet" value="10" min="0.01" step="0.01" />
+          <button class="mini" id="half">½</button>
+          <button class="mini" id="double">×2</button>
+          <button class="mini" id="max">MAX</button>
+        </div>
+
+        <label class="ctrl-label">Сторона</label>
+        <div class="side-row">
+          <button class="side-btn active" data-side="heads" id="sideHeads">
+            <span class="side-icon" style="background:#ffcc33">H</span>
+            Орёл
+          </button>
+          <button class="side-btn" data-side="tails" id="sideTails">
+            <span class="side-icon" style="background:#c0c0c0;color:#333">T</span>
+            Решка
+          </button>
+        </div>
+
+        <button class="bet-btn" id="playBtn">СДЕЛАТЬ СТАВКУ</button>
+        <div class="result-msg" id="resultMsg"></div>
+      </div>
+    </main>
+
+    <section class="history">
+      <h3>Последние игры</h3>
+      <div class="history-list" id="historyList"></div>
+    </section>
+  </div>
+
+  <script src="js/sound.js"></script>
+  <script src="js/animation.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

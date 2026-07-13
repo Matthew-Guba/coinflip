@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: coinflip_pg
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: coinflip
+      POSTGRES_PASSWORD: coinflip_pass
+      POSTGRES_DB: coinflip
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+  adminer:
+    image: adminer
+    container_name: coinflip_adminer
+    restart: unless-stopped
+    ports:
+      - "8081:8080"
+
+volumes:
+  pg_data:
